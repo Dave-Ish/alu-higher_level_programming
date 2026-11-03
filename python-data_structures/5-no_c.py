@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    # Rebuild the string manually without using str.replace()
-    new_string = "".join(
-        [char for char in my_string if char != 'c' and char != 'C'] )
+    # Filter out 'c' and 'C' using a list comprehension or generator
+    new_string = "".join([char for char in my_string if char not in ('c', 'C')])
     return new_string
