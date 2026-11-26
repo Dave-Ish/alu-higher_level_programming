@@ -4,7 +4,7 @@
 
 class Square:
     """Represents a square with controlled access to its size."""
-    def init(self, size=0):
+    def __init__(self, size=0):
         """Initializes a new Square instance with optional size."""
         self.size = size
 
