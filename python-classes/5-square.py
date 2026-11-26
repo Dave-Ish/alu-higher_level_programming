@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Module that defines a Square class with property getters and setters."""
+"""Module that defines a Square class that can print itself."""
 
 
 class Square:
-    """Represents a square with controlled access to its size."""
-    def __init__(self, size=0):
+    """Represents a square that can compute area and print to stdout."""
+    def init(self, size=0):
         """Initializes a new Square instance with optional size."""
         self.size = size
 
@@ -20,7 +20,7 @@ class Square:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+            self.__size = value
 
     def area(self):
         """Returns the current square area."""
