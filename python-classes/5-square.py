@@ -4,7 +4,8 @@
 
 class Square:
     """Represents a square that can compute area and print to stdout."""
-    def init(self, size=0):
+
+    def __init__(self, size=0):
         """Initializes a new Square instance with optional size."""
         self.size = size
 
@@ -20,7 +21,7 @@ class Square:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-            self.__size = value
+        self.__size = value
 
     def area(self):
         """Returns the current square area."""
@@ -30,6 +31,6 @@ class Square:
         """Prints the square in stdout using the character #."""
         if self.__size == 0:
             print("")
-        return
+            return
         for _ in range(self.__size):
             print("#" * self.__size)
