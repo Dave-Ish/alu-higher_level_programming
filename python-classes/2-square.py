@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Module that defines a Square class with size validation."""
+
+
 class Square:
     """Represents a square with validated size."""
     def __init__(self, size=0):
