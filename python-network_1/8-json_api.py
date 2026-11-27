@@ -5,7 +5,7 @@ import requests
 
 
 if __name__ == "__main__":
-    letter = sys.argv[ 1 ] if len(sys.argv) > 1 else ""
+    letter = sys.argv[1] if len(sys.argv) > 1 else ""
     res = requests.post("http://0.0.0", data={"q": letter})
     try:
         data = res.json()
