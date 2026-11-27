@@ -90,3 +90,24 @@ class TestSquare(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSquareSaveEdgeCases(unittest.TestCase):
+    """Explicit save_to_file edge cases for None and empty list."""
+
+    def tearDown(self):
+        """Removes Square.json after each test."""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+    def test_save_to_file_none(self):
+        """Tests Square.save_to_file(None) writes an empty JSON list."""
+        Square.save_to_file(None)
+        with open("Square.json", "r", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty_list(self):
+        """Tests Square.save_to_file([]) writes an empty JSON list."""
+        Square.save_to_file([])
+        with open("Square.json", "r", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")
