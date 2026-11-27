@@ -1,17 +1,12 @@
 #!/usr/bin/python3
-"""Sends a POST search letter to search_user API and parses JSON response."""
+"""Uses GitHub API with Basic Authentication to display user ID."""
 import sys
 import requests
 
 
 if __name__ == "__main__":
-    letter = sys.argv[1] if len(sys.argv) > 1 else ""
-    res = requests.post("http://0.0.0", data={"q": letter})
-    try:
-        data = res.json()
-        if data:
-            print("[{}] {}".format(data.get("id"), data.get("name")))
-        else:
-            print("No result")
-    except ValueError:
-        print("Not a valid JSON")
+    res = requests.get(
+        "https://github.com",
+        auth=(sys.argv[1], sys.argv[2])
+    )
+    print(res.json().get("id"))
