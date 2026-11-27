@@ -57,8 +57,22 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 24)
         self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
 
+    def test_display_no_xy(self):
+        """Tests display() without x and y offsets."""
+        r = Rectangle(2, 2)
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            r.display()
+            self.assertEqual(fake_out.getvalue(), "##\n##\n")
+
+    def test_display_no_y(self):
+        """Tests display() without y offset."""
+        r = Rectangle(2, 2, 2)
+        with patch("sys.stdout", new=io.StringIO()) as fake_out:
+            r.display()
+            self.assertEqual(fake_out.getvalue(), "  ##\n  ##\n")
+
     def test_display(self):
-        """Tests display() with and without x and y offsets."""
+        """Tests display() with both x and y offsets."""
         r = Rectangle(2, 3, 2, 1)
         with patch("sys.stdout", new=io.StringIO()) as fake_out:
             r.display()
@@ -84,21 +98,3 @@ class TestRectangle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-class TestRectangleDisplayCases(unittest.TestCase):
-    """Additional display() test cases without x and y offsets."""
-
-    def test_display_no_xy(self):
-        """Tests display() with x=0 and y=0."""
-        r = Rectangle(2, 2)
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
-            r.display()
-            self.assertEqual(fake_out.getvalue(), "##\n##\n")
-
-    def test_display_no_y(self):
-        """Tests display() with x=2 and y=0."""
-        r = Rectangle(2, 2, 2)
-        with patch("sys.stdout", new=io.StringIO()) as fake_out:
-            r.display()
-            self.assertEqual(fake_out.getvalue(), "  ##\n  ##\n")
