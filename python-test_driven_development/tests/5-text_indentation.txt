@@ -7,4 +7,36 @@ Using ``text_indentation``
 Importing the function:
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Normal text with delimiters and spaces:
+String without delimiters:
+    >>> text_indentation("Holberton School")
+    Holberton School
+
+String with delimiters:
+    >>> text_indentation("Holberton. School? How are you: John")
+    Holberton.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    John
+
+String with blank line:
+    >>> text_indentation("Holberton.\n\nSchool")
+    Holberton.
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    School
+
+Non-string argument:
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Missing one argument:
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
